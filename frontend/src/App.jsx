@@ -2,6 +2,8 @@ import { useState } from 'react'
 import axios from "axios";
 import './App.css'
 
+const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:5001';
+
 function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -21,7 +23,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/chat",
+        `${baseURL}/chat`,
         {
           messages: updatedMessages,
         }
